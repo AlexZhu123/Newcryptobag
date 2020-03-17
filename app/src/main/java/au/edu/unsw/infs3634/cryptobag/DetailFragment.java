@@ -14,15 +14,16 @@ import android.widget.TextView;
 
 public class DetailFragment extends Fragment {
 
-    private TextView coinLong;
-    private TextView coinShort;
-    private TextView value;
-    private TextView hourChange;
-    private TextView dayChange;
-    private TextView weekChange;
-    private TextView market;
-    private TextView volume;
-    private ImageView search;
+    private Coin mCoin;
+    private TextView mName;
+    private TextView mSymbol;
+    private TextView mValue;
+    private TextView mChange1h;
+    private TextView mChange24h;
+    private TextView mChange7d;
+    private TextView mMarketcap;
+    private TextView mVolume;
+    private ImageView mSearch;
 
 
     public DetailFragment() {
@@ -37,32 +38,32 @@ public class DetailFragment extends Fragment {
         int position = arguments.getInt("POSITION");
         Coin coin = Coin.getCoins().get(position);
 
-        coinLong = v.findViewById(R.id.mCoinLong);
-        coinShort = v.findViewById(R.id.mCoinShort);
-        value = v.findViewById(R.id.tvValueField);
-        hourChange = v.findViewById(R.id.tvChange1hField);
-        dayChange = v.findViewById(R.id.tvChange24hField);
-        weekChange = v.findViewById(R.id.mWeekChange);
-        market = v.findViewById(R.id.mMarket);
-        volume = v.findViewById(R.id.mVolume);
-        search = v.findViewById(R.id.mSearch);
+        mName = v.findViewById(R.id.tvName);
+        mSymbol = v.findViewById(R.id.tvSymbol);
+        mValue = v.findViewById(R.id.tvValueField);
+        mChange1h = v.findViewById(R.id.tvChange1hField);
+        mChange24h = v.findViewById(R.id.tvChange24hField);
+        mChange7d = v.findViewById(R.id.tvChange7dField);
+        mMarketcap = v.findViewById(R.id.tvMarketcapField);
+        mVolume = v.findViewById(R.id.tvVolumeField);
+        mSearch = v.findViewById(R.id.ivSearch);
 
-        coinLong.setText(coin.getName());
-        coinShort.setText(coin.getSymbol());
-        value.setText("$" + coin.getValue());
-        hourChange.setText(coin.getChange1h() + " %");
-        dayChange.setText(coin.getChange24h() + " %");
-        weekChange.setText(coin.getChange7d() + " %");
-        market.setText("$" + String.format("%,.2f", coin.getMarketcap()));
-        volume.setText("$" + String.format("%,.2f", coin.getVolume()));
+        mName.setText(coin.getName());
+        mSymbol.setText(coin.getSymbol());
+        mValue.setText("$" + coin.getValue());
+        mChange1h.setText(coin.getChange1h() + " %");
+        mChange24h.setText(coin.getChange24h() + " %");
+        mChange7d.setText(coin.getChange7d() + " %");
+        mMarketcap.setText("$" + String.format("%,.2f", coin.getMarketcap()));
+        mVolume.setText("$" + String.format("%,.2f", coin.getVolume()));
 
-        search.setOnClickListener(new View.OnClickListener() {
+        mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        search.setOnClickListener(new View.OnClickListener() {
+        mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 search();
