@@ -28,13 +28,12 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        wideMode = setWideMode(); //Sets boolean value based on whether device has a certain element
+        wideMode = setWideMode();
 
         CoinAdapter.RecyclerViewClickListener listener = new CoinAdapter.RecyclerViewClickListener() {
             @Override
             public void onClick(View view, int position) {
                 if (wideMode) {
-                    //Refer to tutorial slides
                     FragmentManager myManager = getSupportFragmentManager();
                     FragmentTransaction myTransaction = myManager.beginTransaction();
                     Fragment myFragment = new DetailFragment();
